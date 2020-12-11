@@ -1,6 +1,3 @@
-from gsa_tools.python_tools import pprint_list
-
-
 def read_text_file (file_name):
 
     with open(file_name, "r") as f:
