@@ -1,3 +1,5 @@
+from math import prod
+
 def read_text_file (file_name):
 
     with open(file_name, "r") as f:
@@ -22,6 +24,34 @@ def mod(n, d):
         return d
     else:
         return result
+
+def gcd (a, b):
+    (old_r, r) = (a, b)
+    (old_s, s) = (1, 0)
+    (old_t, t) = (0, 1)
+
+    while r != 0:
+        quotient = old_r//r
+        (old_r, r) = (r, old_r − quotient × r)
+        (old_s, s) = (s, old_s − quotient × s)
+        (old_t, t) = (t, old_t − quotient × t)
+
+    return (old_s, old_d), old_r, (t, s)
+
+
+
+
+def crt (n, a):
+
+    N = prod(n)
+    s = 0
+
+    for ni, ai in zip(n, a):
+        y = N/ni
+        mul_inv = gcd(y, ni)
+        s += ai * mul_inv * y
+
+    return s % N
 
 data = read_text_file("13.txt")
 

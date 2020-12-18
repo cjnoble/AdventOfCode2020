@@ -46,16 +46,20 @@ class Waypoint (object):
     def update_position (self):
         l = sum([p**2 for p in self.position])**0.5
         
-        x = 1 if self.orientation < pi else -1
-        y = x*tan(radians(self.orientation))
-        unit_l = (x**2 + y**2)**0.5
+        #x = 1 if self.orientation < 180 else -1
+        #y = x*tan(radians(self.orientation))
+        
+        x = l*cos(radians(self.orientation))
+        y = l*sin(radians(self.orientation))
+        
+        #unit_l = (x**2 + y**2)**0.5
 
-        x = l*x/unit_l
-        y = l*y/unit_l
+        x = x
+        y = y
         self.position = [x, y]
 
     def R (self, angle):
-        self.orientation += angle
+        self.orientation -= angle
         self.update_position()
 
     def L (self, angle):
