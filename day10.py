@@ -1,5 +1,5 @@
 from itertools import tee
-from gsa_tools.python_tools import value_gen
+from python_tools import value_gen
 
 def read_text_file (file_name):
 
